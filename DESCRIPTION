@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Author: Pavel Filatov
 Maintainer: Pavel Filatov <filatov.py@gmail.com>
 Description: Tools for feature preprocessing such as renaming, one-hot-encoding, probabililty encoding etc. 
-License: MIT License
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
