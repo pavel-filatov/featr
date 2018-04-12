@@ -4,14 +4,14 @@
 #' @importFrom R6 R6Class
 #' @importFrom purrr map reduce set_names
 #' @importFrom tibble as_tibble
-#' @importFrom magrittr `%>%`
+#' @importFrom magrittr "%>%"
 #' @export
 #' @return An object of \code{\link{R6Class}}
 #' @format An \code{\link{R6Class}} generator object
 #' TODO add examples
 #' @examples
 
-encoder <- R6Class(
+encoder <- R6::R6Class(
   "OneHotEncoder",
   private = list(
     initial_features = NULL,
