@@ -1,1 +1,4 @@
-rwave package
+# `featr`
+
+An R package
+
