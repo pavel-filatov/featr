@@ -1,8 +1,3 @@
-#'
-
-
-
-
 
 multi_encoder <- R6Class(
   "MultiOneHotEncoder",
