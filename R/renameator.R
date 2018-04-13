@@ -8,6 +8,7 @@
 #' @param exclude_vars which variables should be exclude from renaming process?
 #'
 #' @return data frame with renamed features
+#' @exportClass
 
 Renameator <- R6::R6Class(
   "Renameator",

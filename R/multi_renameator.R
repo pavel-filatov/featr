@@ -1,3 +1,5 @@
+#' @exportClass
+
 MultiRenameator <- R6::R6Class(
   "MultiRenameator",
   private = list(

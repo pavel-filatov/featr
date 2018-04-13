@@ -11,7 +11,7 @@
 #' TODO add examples
 #' @examples
 
-encoder <- R6::R6Class(
+OneHotEncoder <- R6::R6Class(
   "OneHotEncoder",
   private = list(
     initial_features = NULL,
