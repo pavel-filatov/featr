@@ -11,12 +11,9 @@ importFrom(R6,R6Class)
 importFrom(dplyr,arrange)
 importFrom(dplyr,desc)
 importFrom(dplyr,filter)
-<<<<<<< HEAD
 importFrom(dplyr,lag)
 importFrom(dplyr,lead)
-=======
 importFrom(dplyr,mutate)
->>>>>>> 1ea8b5fc6980f1ed94de75e6df2df75e848bbbb9
 importFrom(magrittr,"%>%")
 importFrom(purrr,flatten)
 importFrom(purrr,map)
