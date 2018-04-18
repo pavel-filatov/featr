@@ -3,7 +3,7 @@
 export(MultiRenameator)
 export(OneHotEncoder)
 export(Renameator)
-export(ftr_cor_index)
+export(cor_index)
 export(make_shift)
 export(separate_with)
 export(sum_over)
