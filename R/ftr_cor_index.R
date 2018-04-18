@@ -31,7 +31,7 @@ cor_index <- function(.df) {
     setNames(c("Var1", "Var2")) %>%
     dplyr::mutate(
       Cor = purrr::map2_dbl(
-        Var1, Var2, ~ cor(mtcars[[.x]], mtcars[[.y]], use = "pairwise.complete.obs")
+        Var1, Var2, ~ cor(.df[[.x]], .df[[.y]], use = "pairwise.complete.obs")
       )
     ) %>%
     dplyr::arrange(dplyr::desc(abs(Cor)))

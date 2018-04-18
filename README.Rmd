@@ -29,11 +29,9 @@ devtools::install_github("r-lib/rlang")
 
 ## Examples 
 
-### `cor_index()` buids a correlation index: it is simply 
+### `cor_index()` makes a correlation index: it gets each pair of variables and calculate 
+correlation between them and turn it all to data frame. 
+Then the function arrange data frame by absolute value of correlation.
 ```{r}
 featr::cor_index(mtcars)
 ```
-
-
-## Contribution
-
