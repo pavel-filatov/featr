@@ -1,4 +1,0 @@
-# `featr`
-
-An R package
-

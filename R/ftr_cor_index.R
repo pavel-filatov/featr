@@ -1,3 +1,6 @@
+# TODO apply cor_index() only to numeric columns
+# TODO make an option of arranging `Cor` (abs (default), asc, desc)
+
 #' Get Correlation Index of DataFrame
 #'
 #' @param .df object of class \code{data.frame}
@@ -11,7 +14,7 @@
 #' @importFrom tibble as_tibble
 #'
 #' @examples
-#' ftr_cor_index(mtcars) %>% head()
+#' cor_index(mtcars) %>% head()
 #' # A tibble: 55 x 3
 #'    Var1  Var2     Cor
 #'    <chr> <chr>  <dbl>
@@ -21,7 +24,7 @@
 #'  4 cyl   mpg   -0.852
 #'  5 disp  mpg   -0.848
 #'  6 cyl   hp     0.832
-ftr_cor_index <- function(.df) {
+cor_index <- function(.df) {
   utils::combn(names(.df), 2) %>%
     t() %>%
     tibble::as_tibble() %>%

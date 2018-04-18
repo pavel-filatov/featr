@@ -1,0 +1,39 @@
+---
+title: "`featr` package"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+`featr` stands for "feature" (oh, really?) and pronounced the same way.
+There is a bunch of functions to produce not-so-common tasks such as 
+renaming variables in the data frame or list of data frames,
+one-hot-encoding with custom parameters etc. 
+Please see [Examples](#examples) section
+
+## Installation
+
+To install `featr` please use `devtools`:
+
+```r
+devtools::install_github("pavel-filatov/featr")
+```
+
+Please note: you may need to install development version of `rlang` package
+**before** the installation of `featr`:
+```r
+devtools::install_github("r-lib/rlang")
+```
+
+## Examples 
+
+### `cor_index()` buids a correlation index: it is simply 
+```{r}
+featr::cor_index(mtcars)
+```
+
+
+## Contribution
+
