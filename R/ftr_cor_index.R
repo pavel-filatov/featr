@@ -1,13 +1,35 @@
-#' Get correlation index for data frame
+#' Get Correlation Index of DataFrame
 #'
-#' @param .df data frame
+#' @param .df object of class \code{data.frame}
 #'
-#' @return data frame with correllation index
+#' @return Object of class \code{data.frame} contained correlation index. (See example below.)
+#'
 #' @export
+#' @importFrom magrittr %>%
+#' @importFrom purrr map map2_dbl
+#' @importFrom dplyr filter mutate arrange desc
+#' @importFrom tibble as_tibble
 #'
 #' @examples
-#' ftr_cor_index(mtcars)
-#'
+#' ftr_cor_index(mtcars) %>% head()
+#' # A tibble: 55 x 3
+#'    Var1  Var2     Cor
+#'    <chr> <chr>  <dbl>
+#'  1 cyl   disp   0.902
+#'  2 disp  wt     0.888
+#'  3 mpg   wt    -0.868
+#'  4 cyl   mpg   -0.852
+#'  5 disp  mpg   -0.848
+#'  6 cyl   hp     0.832
 ftr_cor_index <- function(.df) {
-
+  utils::combn(names(.df), 2) %>%
+    t() %>%
+    tibble::as_tibble() %>%
+    setNames(c("Var1", "Var2")) %>%
+    dplyr::mutate(
+      Cor = purrr::map2_dbl(
+        Var1, Var2, ~ cor(mtcars[[.x]], mtcars[[.y]], use = "pairwise.complete.obs")
+      )
+    ) %>%
+    dplyr::arrange(dplyr::desc(abs(Cor)))
 }

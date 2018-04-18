@@ -2,20 +2,28 @@
 % Please edit documentation in R/ftr_cor_index.R
 \name{ftr_cor_index}
 \alias{ftr_cor_index}
-\title{Get correlation index for data frame}
+\title{Get Correlation Index of DataFrame}
 \usage{
 ftr_cor_index(.df)
 }
 \arguments{
-\item{.df}{data frame}
+\item{.df}{object of class \code{data.frame}}
 }
 \value{
-data frame with correllation index
+Object of class \code{data.frame} contained correlation index. (See example below.)
 }
 \description{
-Get correlation index for data frame
+Get Correlation Index of DataFrame
 }
 \examples{
-ftr_cor_index(mtcars)
-
+ftr_cor_index(mtcars) \%>\% head()
+# A tibble: 55 x 3
+   Var1  Var2     Cor
+   <chr> <chr>  <dbl>
+ 1 cyl   disp   0.902
+ 2 disp  wt     0.888
+ 3 mpg   wt    -0.868
+ 4 cyl   mpg   -0.852
+ 5 disp  mpg   -0.848
+ 6 cyl   hp     0.832
 }

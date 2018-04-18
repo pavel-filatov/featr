@@ -4,6 +4,3 @@
 count_na <- function(...) {
   UseMethod("count_na")
 }
-
-
-count_na
