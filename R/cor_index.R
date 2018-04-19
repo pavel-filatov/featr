@@ -10,7 +10,7 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2_dbl
-#' @importFrom dplyr filter mutate arrange desc
+#' @importFrom dplyr filter mutate arrange desc select ungroup
 #' @importFrom tibble as_tibble
 #'
 #' @examples
@@ -25,6 +25,17 @@
 #'  5 disp  mpg   -0.848
 #'  6 cyl   hp     0.832
 cor_index <- function(.df) {
+  if ("grouped_df" %in% class(.df)) .df <- dplyr::ungroup(.df)
+  
+  .df <- dplyr::select_if(.df, is.numeric)
+  
+  if (ncol(.df) == 0) {
+    stop("Sorry, there are no any numeric variables")
+  } 
+  if (ncol(.df) == 1) {
+    stop("There are only one numeric variable. I cannot build a correlation index with only 1 variable :(")
+  } 
+  
   utils::combn(names(.df), 2) %>%
     t() %>%
     tibble::as_tibble() %>%
