@@ -13,7 +13,7 @@ make_rollmeans(..., .n = 3, .align = "right", na.rm = TRUE)
 
 \item{.align}{\code{right}, \code{left} or \code{center}. Default is \code{right}}
 
-\item{na.rm}{}
+\item{na.rm}{are \code{NA}s need to be removed while calculating rolling mean?}
 }
 \value{
 expression to unquote inside \code{mutate()} function

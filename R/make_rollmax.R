@@ -1,20 +1,20 @@
-#' Build a List of Expressions (Rolling Mean)
+#' Build a List of Expressions (Rolling Max)
 #'
-#' @param ... variables to make \code{roll_mean}s  
-#' @param .n integer vector of window sizes to calculate rolling mean
+#' @param ... variables to make \code{roll_max}s  
+#' @param .n integer vector of window sizes to calculate rolling max
 #' @param .align \code{right}, \code{left} or \code{center}. Default is \code{right}
-#' @param na.rm are \code{NA}s need to be removed while calculating rolling mean?
+#' @param na.rm are \code{NA}s need to be removed while calculating rolling max?
 #'
 #' @return expression to unquote inside \code{mutate()} function
 #' @export 
 #' 
 #' @importFrom rlang exprs expr 
 #' @importFrom purrr map flatten
-#' @importFrom RcppRoll roll_mean
+#' @importFrom RcppRoll roll_max
 #' 
 #'
 #' @examples
-make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
+make_rollmax <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
   if (!.align %in% c("right", "left", "center")) {
     stop("`.align` must be one of 'right', 'left' or 'center'")
   }
@@ -28,11 +28,11 @@ make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
   }
   
   if (all(.n <= 1)) {
-    stop("All elements in `.n` less or equal than 1. Rolling mean for this kind of elements makes no sense")
+    stop("All elements in `.n` less or equal than 1. Rolling max for this kind of elements makes no sense")
   }
   
   if (any(.n <= 1)) {
-    message("There is at least one element less or equal than 1. Rolling mean for this kind of elements makes no sense")
+    message("There is at least one element less or equal than 1. Rolling max for this kind of elements makes no sense")
   }
   
   .n <- unique(.n[.n > 1])
@@ -41,9 +41,9 @@ make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
   
   q <- purrr::map(.dots, function(.var) {
     purrr::map(.n, function(.nn) {
-      rlang::expr(RcppRoll::roll_mean(!!.var, !!.nn, fill = NA, align = !!.align, na.rm = !!na.rm))
+      rlang::expr(RcppRoll::roll_max(!!.var, !!.nn, fill = NA, align = !!.align, na.rm = !!na.rm))
     }) %>% 
-      setNames(paste0(as.character(.var), "_rollmean_", .n))
+      setNames(paste0(as.character(.var), "_rollmax_", .n))
   }) %>% purrr::flatten() 
   q
 }
