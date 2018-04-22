@@ -43,7 +43,7 @@ make_rollmax <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
     purrr::map(.n, function(.nn) {
       rlang::expr(RcppRoll::roll_max(!!.var, !!.nn, fill = NA, align = !!.align, na.rm = !!na.rm))
     }) %>% 
-      setNames(paste0(as.character(.var), "_rollmax_", .n))
+      setNames(paste0(as.character(.var), "_rollmax", .n))
   }) %>% purrr::flatten() 
   q
 }

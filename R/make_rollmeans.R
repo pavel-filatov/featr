@@ -12,7 +12,6 @@
 #' @importFrom purrr map flatten
 #' @importFrom RcppRoll roll_mean
 #' 
-#'
 #' @examples
 make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
   if (!.align %in% c("right", "left", "center")) {
@@ -43,7 +42,7 @@ make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
     purrr::map(.n, function(.nn) {
       rlang::expr(RcppRoll::roll_mean(!!.var, !!.nn, fill = NA, align = !!.align, na.rm = !!na.rm))
     }) %>% 
-      setNames(paste0(as.character(.var), "_rollmean_", .n))
+      setNames(paste0(as.character(.var), "_rollmean", .n))
   }) %>% purrr::flatten() 
   q
 }
