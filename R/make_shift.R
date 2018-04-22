@@ -1,4 +1,4 @@
-#' Build a Quosure to Make Lags and Leads
+#' Build a List of Expressions (Lags and Leads)
 #'
 #' This function builds an expression to make multiple lags and/or leads.
 #' \bold{NOTE: For use inside \code{dplyr::mutate()} only!}

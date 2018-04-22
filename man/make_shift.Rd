@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_shift.R
 \name{make_shift}
 \alias{make_shift}
-\title{Build a Quosure to Make Lags and Leads}
+\title{Build a List of Expressions (Lags and Leads)}
 \usage{
 make_shift(..., .n = 1)
 }
