@@ -3,7 +3,7 @@
 #' @param ... variables to make \code{roll_mean}s  
 #' @param .n integer vector of window sizes to calculate rolling mean
 #' @param .align \code{right}, \code{left} or \code{center}. Default is \code{right}
-#' @param na.rm are \code{NA}s need to be removed while calculating rolling mean?
+#' @param na.rm are \code{NA}s need to be removed while calculating rolling mean? Default is \code{FALSE}
 #'
 #' @return expression to unquote inside \code{mutate()} function
 #' @export 
@@ -13,7 +13,7 @@
 #' @importFrom RcppRoll roll_mean
 #' 
 #' @examples
-make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
+make_rollmeans <- function(..., .n = 3, .align = "right", na.rm = FALSE) {
   if (!.align %in% c("right", "left", "center")) {
     stop("`.align` must be one of 'right', 'left' or 'center'")
   }

@@ -4,7 +4,7 @@
 \alias{make_rollmeans}
 \title{Build a List of Expressions (Rolling Mean)}
 \usage{
-make_rollmeans(..., .n = 3, .align = "right", na.rm = TRUE)
+make_rollmeans(..., .n = 3, .align = "right", na.rm = FALSE)
 }
 \arguments{
 \item{...}{variables to make \code{roll_mean}s}
@@ -13,7 +13,7 @@ make_rollmeans(..., .n = 3, .align = "right", na.rm = TRUE)
 
 \item{.align}{\code{right}, \code{left} or \code{center}. Default is \code{right}}
 
-\item{na.rm}{are \code{NA}s need to be removed while calculating rolling mean?}
+\item{na.rm}{are \code{NA}s need to be removed while calculating rolling mean? Default is \code{FALSE}}
 }
 \value{
 expression to unquote inside \code{mutate()} function

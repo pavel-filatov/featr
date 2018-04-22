@@ -3,7 +3,7 @@
 #' @param ... variables to make \code{roll_max}s  
 #' @param .n integer vector of window sizes to calculate rolling max
 #' @param .align \code{right}, \code{left} or \code{center}. Default is \code{right}
-#' @param na.rm are \code{NA}s need to be removed while calculating rolling max?
+#' @param na.rm are \code{NA}s need to be removed while calculating rolling max? Default is \code{FALSE}
 #'
 #' @return expression to unquote inside \code{mutate()} function
 #' @export 
@@ -14,7 +14,7 @@
 #' 
 #'
 #' @examples
-make_rollmax <- function(..., .n = 3, .align = "right", na.rm = TRUE) {
+make_rollmax <- function(..., .n = 3, .align = "right", na.rm = FALSE) {
   if (!.align %in% c("right", "left", "center")) {
     stop("`.align` must be one of 'right', 'left' or 'center'")
   }

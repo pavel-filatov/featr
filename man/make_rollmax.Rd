@@ -4,7 +4,7 @@
 \alias{make_rollmax}
 \title{Build a List of Expressions (Rolling Max)}
 \usage{
-make_rollmax(..., .n = 3, .align = "right", na.rm = TRUE)
+make_rollmax(..., .n = 3, .align = "right", na.rm = FALSE)
 }
 \arguments{
 \item{...}{variables to make \code{roll_max}s}
@@ -13,7 +13,7 @@ make_rollmax(..., .n = 3, .align = "right", na.rm = TRUE)
 
 \item{.align}{\code{right}, \code{left} or \code{center}. Default is \code{right}}
 
-\item{na.rm}{are \code{NA}s need to be removed while calculating rolling max?}
+\item{na.rm}{are \code{NA}s need to be removed while calculating rolling max? Default is \code{FALSE}}
 }
 \value{
 expression to unquote inside \code{mutate()} function
