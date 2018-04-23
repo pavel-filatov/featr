@@ -5,6 +5,7 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 `featr` stands for "feature" (oh, really?) and pronounced the same way.
@@ -29,9 +30,37 @@ devtools::install_github("r-lib/rlang")
 
 ## Examples 
 
-### `cor_index()` makes a correlation index: it gets each pair of variables and calculate 
-correlation between them and turn it all to data frame. 
-Then the function arrange data frame by absolute value of correlation.
+#### `cor_index()` 
+
+`cor_index()` fucntion makes a correlation index: it gets each pair of variables, calculate 
+correlation between them, and turn it all to data frame. 
+Then the function sort data frame by absolute value of correlation.
 ```{r}
 featr::cor_index(mtcars)
 ```
+
+
+#### `identity_index()`
+
+For each pair of variables in input data frame `identity_index()` calculates three numbers:
+
+  - number of entries where first and second variables are equal;
+  - number of entries where first and second variables aren't equal;
+  - all the other cases (i.e. when one of the entries is `NA`)
+  
+`identitity_index` is computed as ratio $identity\ index = \frac{identical}{identical + non\_identical}$
+
+`.na_include` flag 
+
+```{r}
+set.seed(42)
+df <- tibble(letter1 = sample(c(letters[1:3], NA, NaN), 100, TRUE),
+             letter2 = sample(c(letters[1:3], NA), 100, TRUE),
+             letter3 = sample(c(letters[1:3], NA), 100, TRUE),
+             num1 = sample(1:4, 100, TRUE),
+             num2 = sample(1:4, 100, TRUE),
+             num3 = sample(c(1:3, NA), 100, TRUE))
+
+identity_index(df, .na_include = TRUE)
+```
+
