@@ -7,9 +7,9 @@
 #'
 #' @return data frame with identity index.
 #'   \code{identical} and \code{non_identical} columns contatin number of observations where
-#'   \code{Var1 == Var2} and \code{Var1 != Var2} respectively.
-#'   \code{other} column contains number of observations with neither \code{Var1 == Var2} nor \code{Var1 != Var2} 
-#' conditions, i.e. \code{NaN}s, \code{NULL}s etc.
+#'   \code{var1 == var2} and \code{var1 != var2} respectively.
+#'   \code{other} column contains number of observations with neither \code{var1 == var2} nor \code{var1 != var2} 
+#' conditions, e.g. \code{NaN}s, \code{NA}s etc.
 #' 
 #' @export
 #' @importFrom dplyr ungroup mutate arrange desc
@@ -40,17 +40,17 @@ identity_index <- function(.df, .na_include = FALSE) {
   .temp <- utils::combn(names(.df), 2) %>%
     t() %>%
     tibble::as_tibble() %>%
-    setNames(c("Var1", "Var2"))
+    setNames(c("var1", "var2"))
   
   if (.na_include) {
     .temp <- .temp %>% 
       dplyr::mutate(
         identical = purrr::map2_int(
-          Var1, Var2,
+          var1, var2,
           ~ sum(.df[[.x]] == .df[[.y]] | is.na(.df[[.x]]) & is.na(.df[[.y]]), na.rm = TRUE)
         ),
         non_identical = purrr::map2_int(
-          Var1, Var2,
+          var1, var2,
           ~ sum(.df[[.x]] != .df[[.y]] | xor(is.na(.df[[.x]]), is.na(.df[[.y]])), na.rm = TRUE)
         )
       )
@@ -58,11 +58,11 @@ identity_index <- function(.df, .na_include = FALSE) {
     .temp <- .temp %>% 
       dplyr::mutate(
         identical = purrr::map2_int(
-          Var1, Var2,
+          var1, var2,
           ~ sum(.df[[.x]] == .df[[.y]], na.rm = TRUE)
         ),
         non_identical = purrr::map2_int(
-          Var1, Var2,
+          var1, var2,
           ~ sum(.df[[.x]] != .df[[.y]], na.rm = TRUE)
         )
       )

@@ -39,11 +39,11 @@ cor_index <- function(.df) {
   utils::combn(names(.df), 2) %>%
     t() %>%
     tibble::as_tibble() %>%
-    setNames(c("Var1", "Var2")) %>%
+    setNames(c("var1", "var2")) %>%
     dplyr::mutate(
-      Cor = purrr::map2_dbl(
-        Var1, Var2, ~ cor(.df[[.x]], .df[[.y]], use = "pairwise.complete.obs")
+      cor = purrr::map2_dbl(
+        var1, var2, ~ cor(.df[[.x]], .df[[.y]], use = "pairwise.complete.obs")
       )
     ) %>%
-    dplyr::arrange(dplyr::desc(abs(Cor)))
+    dplyr::arrange(dplyr::desc(abs(cor)))
 }

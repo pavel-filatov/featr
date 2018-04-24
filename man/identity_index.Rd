@@ -16,9 +16,9 @@ Default if \code{FALSE}}
 \value{
 data frame with identity index.
   \code{identical} and \code{non_identical} columns contatin number of observations where
-  \code{Var1 == Var2} and \code{Var1 != Var2} respectively.
-  \code{other} column contains number of observations with neither \code{Var1 == Var2} nor \code{Var1 != Var2} 
-conditions, i.e. \code{NaN}s, \code{NULL}s etc.
+  \code{var1 == var2} and \code{var1 != var2} respectively.
+  \code{other} column contains number of observations with neither \code{var1 == var2} nor \code{var1 != var2} 
+conditions, e.g. \code{NaN}s, \code{NA}s etc.
 }
 \description{
 Calculate the index of sameness for variables in the data frame
