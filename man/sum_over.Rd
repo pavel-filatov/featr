@@ -4,10 +4,10 @@
 \alias{sum_over}
 \title{Sum Over Selected Vars}
 \usage{
-sum_over(.data, ...)
+sum_over(.df, ...)
 }
 \arguments{
-\item{.data}{data frame}
+\item{.df}{data frame}
 
 \item{...}{variables to sum}
 }
