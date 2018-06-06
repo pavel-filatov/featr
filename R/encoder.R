@@ -4,7 +4,6 @@
 #' @importFrom purrr map reduce set_names
 #' @importFrom tibble as_tibble
 #' @importFrom magrittr "%>%"
-#' @export
 #' @return An object of \code{\link{R6Class}}
 #' @format An \code{\link{R6Class}} generator object
 #' TODO add examples
@@ -23,8 +22,10 @@ OneHotEncoder <- R6::R6Class(
     fit = function(df, exclude = NULL) {
       private$initial_features <- names(df)
 
-      private$features_wo_changing <- unique(c(exclude, names(select_if(df, is_numeric))))
-      private$features_to_change <- names(df)[!(names(df) %in% private$features_wo_changing)]
+      private$features_wo_changing <- 
+        unique(c(exclude, names(select_if(df, is_numeric))))
+      private$features_to_change <- 
+        names(df)[!(names(df) %in% private$features_wo_changing)]
 
       df_wo_changing <- df[private$features_wo_changing]
       df_to_encoding <- df[private$features_to_change]

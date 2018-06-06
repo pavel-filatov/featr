@@ -33,7 +33,12 @@ cor_index <- function(.df) {
     stop("Sorry, there are no any numeric variables")
   } 
   if (ncol(.df) == 1) {
-    stop("There are only one numeric variable. I cannot build a correlation index with only 1 variable :(")
+    stop(
+      paste(
+        "There are only one numeric variable.", 
+        "I cannot build a correlation index with only 1 variable :("
+      )
+    )
   } 
   
   utils::combn(names(.df), 2) %>%
