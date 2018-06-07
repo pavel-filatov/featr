@@ -15,6 +15,7 @@
 #' @importFrom rlang sym quo UQ
 #' @importFrom purrr cross2 map
 #' @importFrom tidyselect vars_select
+#' @importFrom magrittr "%>%"
 #' 
 #'
 #' @examples
@@ -32,6 +33,8 @@ make_interactions <- function(.df, .f, ...) {
   .vars <- tidyselect::vars_select(names(.df), ...)
   # f <- expr(!!.f)
   purrr::cross2(.vars, .vars, .filter = `==`) %>% 
-    purrr::map(~ rlang::quo(rlang::UQ(.f)(!!rlang::sym(.x[[1]]), !!rlang::sym(.x[[2]]))))
+    purrr::map(
+      ~ rlang::quo(rlang::UQ(.f)(!!rlang::sym(.x[[1]]), !!rlang::sym(.x[[2]])))
+    )
 }
 

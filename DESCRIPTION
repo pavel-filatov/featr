@@ -4,8 +4,9 @@ Title: Easy-to-use feature preprocessing tools
 Version: 0.0.0.9000
 Author: Pavel Filatov
 Maintainer: Pavel Filatov <filatov.py@gmail.com>
-URL: https://github.com/pavel-filatov/featr
 Description: Tools for feature preprocessing such as renaming, one-hot-encoding, probabililty encoding etc. 
+URL: https://github.com/pavel-filatov/featr
+BugReports: https://github.com/pavel-filatov/featr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
