@@ -12,6 +12,29 @@ extract_seasonality.default <- function(.x) {
 }
 
 
+#' Extract Seasonality from Vector
+#'
+#' Extract seasonality from numeric vector
+#' 
+#' @param .x numeric vector
+#' @param .freq frequency for time series
+#' @param .method method/methods to extract seasonality; could be "stl" (default), "additive", "multiplicative"
+#' @param .part parts of decomposition to keep: "seasonal" (default), "trend", "remainder"
+#'
+#' @return data frame with \code{.part} parts of \code{.method} decompositions
+#'
+#' @examples 
+#' x <- rep(c(1:6, 6:1), 10)
+#' seasonalities <- extract_seasonality(x, .freq = 12, .method = c("stl", "additive"))
+#' head(seasonalities)
+#' #>   stl_seasonal additive_seasonal
+#' #>          <dbl>             <dbl>
+#' #> 1       -2.5              -2.50 
+#' #> 2       -1.5              -1.5  
+#' #> 3       -0.5              -0.5  
+#' #> 4        0.500             0.500
+#' #> 5        1.50              1.50 
+#' #> 6        2.50              2.5 
 extract_seasonality.numeric <- function(.x,
                                         .freq = 12,
                                         .method = "stl",
@@ -49,7 +72,12 @@ extract_seasonality.numeric <- function(.x,
 }
 
 
-extract_seasonality.data.frame <- function(.df, ..., .freq = 12, .method = "stl", .part = "seasonal") {
+
+extract_seasonality.data.frame <- function(.df, 
+                                           ..., 
+                                           .freq = 12, 
+                                           .method = "stl", 
+                                           .part = "seasonal") {
   .vars <- rlang::enquos(...)
   .vars_names <- purrr::map(.vars, rlang::quo_name)
   
